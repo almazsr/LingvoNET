@@ -33,11 +33,10 @@ namespace LingvoNET
             items.Clear();
 
             var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = "LingvoNET.Dict.глаголы.bin";
+            var resourceName = "LingvoNET.Dict.глаголы";
 
             using (var stream = assembly.GetManifestResourceStream(resourceName))
-            using (var zip = new GZipStream(stream, CompressionMode.Decompress))
-            using (var sr = new StreamReader(zip, Encoding.GetEncoding(1251)))
+            using (var sr = new StreamReader(stream))
             while (sr.Peek() >= 0)
             {
                 var line = sr.ReadLine();
@@ -74,11 +73,10 @@ namespace LingvoNET
             schemas.EndInit();
 
             //загружаем пары несоверш-соверш
-            resourceName = "LingvoNET.Dict.ImperfectPerfect.bin";
+            resourceName = "LingvoNET.Dict.ImperfectPerfect";
 
             using (var stream = assembly.GetManifestResourceStream(resourceName))
-            using (var zip = new GZipStream(stream, CompressionMode.Decompress))
-            using (var sr = new StreamReader(zip, Encoding.GetEncoding(1251)))
+            using (var sr = new StreamReader(stream))
                 while (sr.Peek() >= 0)
                 {
                     var line = sr.ReadLine();
